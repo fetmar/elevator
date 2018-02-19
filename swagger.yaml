@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  description: "The elevator manages updates for Tangerine. This service is used by the tangerine client "
+  version: "0.0.1"
+  title: "elevator"
+  contact:
+    email: "j@also.engineering"
+  license:
+    name: "GPLv3"
+    url: "https://www.gnu.org/licenses/gpl-3.0.en.html"
+basePath: "/version"
+schemes:
+- "http"
+paths:
+  /version/{group}:
+    get:
+      summary: "Returns the `version` document from the specified group."
+      produces:
+      - "application/json"
+      parameters:
+      - name: "group"
+        in: "path"
+        description: "The name of the group."
+        required: true
+        type: "string"
+      responses:
+        401:
+          description: "Bad request. Could be missing the group name."
+        200:
+          description: "Successfully retrieved the version document."
+        404:
+          description: "No database found, or no version document within the database."
+  /revs/{group}:
+    get:
+      summary: "Returns the revision property for specified document ids and all documents related to assessments not archived."
+      produces:
+      - "application/json"
+      consumes:
+      - "application/json"
+      parameters:
+      - name: "group"
+        in: "path"
+        description: "The name of the group."
+        required: true
+        type: "string"
+      - name: "ids"
+        in: "body"
+        description: "The name of the group."
+        required: true
+        schema:
+          type: "object"
+          properties:
+            ids:
+              type: "array"
+              items:
+                type: "string"
+      responses:
+        401:
+          description: "Bad request. Could be missing the group name."
+        200:
+          description: "Successfully retrieved the version document."
+          schema:
+            type: "array"
+            items:
+              type: "object"
+              properties:
+                id:
+                  type: "string"
+                rev:
+                  type: "string"
+        404:
+          description: "No database found, or no version document within the database."
+  /fetch/{group}:
+    get:
+      summary: "Returns the requested docouments."
+      produces:
+      - "application/json"
+      parameters:
+      - name: "group"
+        in: "path"
+        description: "The name of the group."
+        required: true
+        type: "string"
+      responses:
+        401:
+          description: "Bad request. Could be missing the group name."
+        200:
+          description: "Successfully retrieved the version document."
+          schema:
+            type: "array"
+            items:
+              description: "A document representing a part of an assessment, or an update document."
+              type: "object"
+        404:
+          description: "No database found, or no version document within the database."
