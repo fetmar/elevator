@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --config=.jest.json"
+    "test": "NODE_ENV=feature/travis jest --config=.jest.json"
   },
   "author": "j@also.engineering",
   "repository": "assess-intl/elevator",
