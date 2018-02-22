@@ -1,5 +1,7 @@
 # Elevator
 
+[![Build Status](https://travis-ci.org/fetmar/elevator.svg?branch=master)](https://travis-ci.org/fetmar/elevator)
+
 The Elevator provides update management features for Tangerine clients.
 
 ## Summary
@@ -45,7 +47,7 @@ The others are used by the route function, partially for separation of concerns 
   * `work` returns a promise and resolves when the actual work is done.
   * `route` uses `clean`, `validate`, `work` in that order and then catches any errors
 
-The benefit is that the unit tests are really easy to write and the real logic of the program is all in `work`. This structure is based very loosly on [go-kit](https://github.com/go-kit/kit). 
+The benefit is that the unit tests are really easy to write and the real logic of the program is all in `work`. This structure is based very loosly on [go-kit](https://github.com/go-kit/kit).
 
 ## Security
 
