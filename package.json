@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --runInBand --config=.jest.json"
+    "test": "jest --coverage --no-cache --runInBand --config .jest.json"
   },
   "author": "j@also.engineering",
   "repository": "assess-intl/elevator",
