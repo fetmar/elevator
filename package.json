@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --maxWorkers=2 --config=.jest.json"
+    "test": "jest --runInBand --config=.jest.json"
   },
   "author": "j@also.engineering",
-  "repository": "assess/elevator",
+  "repository": "assess-intl/elevator",
   "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.18.2",
