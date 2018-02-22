@@ -2,7 +2,7 @@ const makeResponse = require('../src/utils/makeResponse');
 const Http = require('http-status-codes');
 
 describe('makeResponse', ()=>{
-  it('should log a message', ()=>{
+  it('should make a response object', ()=>{
     expect(makeResponse(Http.OK,{})).toEqual({statusCode:Http.OK,body:{}});
   });
 
