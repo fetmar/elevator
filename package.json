@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --maxWorkers=1 --config=.jest.json && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "jest --maxWorkers=1 --config=.jest.json"
   },
   "author": "j@also.engineering",
   "repository": "also-engineering/elevator",
