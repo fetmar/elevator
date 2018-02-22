@@ -4,14 +4,13 @@
 
 'use strict';
 
-let Conf = require('./Conf');
+const Settings = {};
+const errors = [];
+const warns = [];
 
-let Settings = {};
-let errors = [];
-let warns = [];
 
 // Require these environment variables
-let requireVars = [
+const requireVars = [
   {
     key: 'T_ADMIN',
     desc: 'CouchDB admin user name.'
@@ -50,14 +49,13 @@ let add = function(key, value) {
     configurable: false,
     enumerable: true
   });
-}
+};
 
 
 // Process env vars
 requireVars.forEach(function processEnvVars(el){
   if (!process.env[el.key]) {
     if (el.defaultValue === undefined) {
-
       errors.push(el);
     } else {
       warns.push(el);
@@ -69,8 +67,7 @@ requireVars.forEach(function processEnvVars(el){
 });
 
 // Halt program if errors
-var missingSettings = Boolean(errors.length !== 0);
-if (missingSettings) {
+if (errors.length !== 0) {
   console.log(`Elevator requires these environment variables:\n
 ${errors.map((el) => `${el.key}\t\t${el.desc}`).join('\n')}
 `);
@@ -78,8 +75,7 @@ ${errors.map((el) => `${el.key}\t\t${el.desc}`).join('\n')}
 }
 
 // Warn if defaults used.
-var warningsExist = Boolean(warns.length !== 0);
-if (warningsExist) {
+if (warns.length !== 0) {
   console.log(`Elevator missing environment variables. Defaults used:\n
 ${warns.map((el) => `${el.key}=${el.defaultValue}\t\t${el.desc}`).join('\n')}
 `);
