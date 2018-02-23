@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "NODE_ENV=test jest --no-cache --config=.jest.json"
+    "test": "NODE_ENV=test jest --no-cache --maxWorkers=2 --config=.jest.json"
   },
   "author": "j@also.engineering",
   "repository": "assess-intl/elevator",
