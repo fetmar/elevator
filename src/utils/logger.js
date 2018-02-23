@@ -16,7 +16,8 @@ function loggerFactory(level){
         return;
       } else {
         // use double quotes for multi word values (values containing a space)
-        vals[i] = !~String(vals[i]).indexOf(' ') ? vals[i] : `"${vals[i].replace(/"/g, '\\"')}"`;
+        const valString = String(vals[i]);
+        vals[i] = !~valString.indexOf(' ') ? vals[i] : `"${valString.replace(/"/g, '\\"')}"`;
         valPairs.push([vals[i-1], vals[i]].join('='));
       }
     });

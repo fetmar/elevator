@@ -33,11 +33,6 @@ const requireVars = [
     key: 'T_COUCH_HOST',
     desc: 'Host for CouchDB (e.g. localhost, 192.168.0.5, etc.).',
     defaultValue: 'localhost'
-  },
-  {
-    key: 'T_LOG_LEVEL',
-    desc: 'Detail of logs.',
-    defaultValue: 'info'
   }
 
 ];
