@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/fetmar/elevator.svg?branch=master)](https://travis-ci.org/fetmar/elevator)
 [![Coverage Status](https://coveralls.io/repos/github/fetmar/elevator/badge.svg?branch=master)](https://coveralls.io/github/fetmar/elevator?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b5bd7ee60954e5e96821fbabfbcb0cb)](https://www.codacy.com/app/fetmar/elevator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fetmar/elevator&amp;utm_campaign=Badge_Grade)
 
 The Elevator provides update management features for Tangerine clients.
 
