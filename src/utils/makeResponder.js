@@ -19,19 +19,20 @@ const Errs = require('./errors');
 // validate returns a responseError and log if there's an error. If there's no error
 // validate will return nothing.
 function validate(resp) {
+
+  // this happens if something throws errors inside a promise
   if (resp instanceof Error) {
     lError(
       'name', resp.name,
-      'msg', `"${resp.message}"`,
-      'stack', `"${resp.stack}"`
+      'msg', `"${resp.message}"`
     );
     return Errs.INTERNAL_SERVER_ERROR;
   }
 
-  if (resp.statusCode == 0) {
+  if (resp.statusCode === undefined) {
     lError(
       'code', resp.statusCode,
-      'err', 'Status code not set.'
+      'err', 'Status code cannot be undefined.'
     );
     return Errs.INTERNAL_SERVER_ERROR;
   }
