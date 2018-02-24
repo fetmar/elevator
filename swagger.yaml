@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "The elevator manages updates for Tangerine. This service is used by the tangerine client "
-  version: "0.0.1"
+  version: "0.0.2"
   title: "elevator"
   contact:
     email: "j@also.engineering"

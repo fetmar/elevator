@@ -1,12 +1,13 @@
 {
   "name": "elevator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An update helper for Tangerine.",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "nyc --reporter=html --reporter=text mocha --reporter spec",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "NODE_ENV=test nyc --reporter=text mocha --reporter spec && nyc report --reporter=text-lcov > .nyc_output/lcov.info",
+    "test-watch": "NODE_ENV=test mocha --watch --reporter spec",
+    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "author": "j@also.engineering",
   "repository": "assess-intl/elevator",
@@ -27,6 +28,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^21.12.2",
+    "eslint-plugin-mocha": "^4.11.0",
     "mocha": "^5.0.1",
     "nyc": "^11.4.1",
     "sinon": "^4.3.0",

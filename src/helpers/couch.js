@@ -22,7 +22,7 @@ module.exports = {
       }
       unirest.get(Conf.calcNotArchivedViewUrl(groupName)).headers(JSON_OPTS)
         .end((response)=>{
-          if (response.error) {
+          if (response.statusCode === 0) {
             lError('function', 'getNotArchived>callback', 'response', response.error);
             return reject(Errs.COUCH_RESPONSE_ERROR);
           }
@@ -45,7 +45,7 @@ module.exports = {
       unirest.post(Conf.calcAllDocsUrl(groupName)).headers(Conf.JSON_OPTS)
         .send({keys:ids})
         .end(( response ) => {
-          if (response.error) {
+          if (response.statusCode === 0) {
             lError('function', 'getAllDocsRevs>callback', 'response', response.error);
             return reject(Errs.COUCH_RESPONSE_ERROR);
           }
@@ -68,7 +68,7 @@ module.exports = {
       unirest.post(Conf.calcAllDocsUrl(groupName) + '?include_docs=true').headers(Conf.JSON_OPTS)
         .send({keys:ids})
         .end(( response ) => {
-          if (response.error) {
+          if (response.statusCode === 0) {
             lError('function', 'getAllDocs>callback', 'response', response.error);
             return reject(Errs.COUCH_RESPONSE_ERROR);
           }
@@ -88,7 +88,7 @@ module.exports = {
 
       unirest.get(Conf.calcVersionDocUrl(groupName)).headers(JSON_OPTS)
         .end((response)=>{
-          if (response.error) {
+          if (response.statusCode === 0) {
             lError('function', 'getVersion>callback','response', response.error);
             return reject(Errs.COUCH_RESPONSE_ERROR);
           }
@@ -112,7 +112,7 @@ module.exports = {
       unirest.post(Conf.calcByDKeyViewUrl(groupName)).headers(Conf.JSON_OPTS)
         .send({keys:dKeys})
         .end(( response ) => {
-          if (response.error) {
+          if (response.statusCode === 0) {
             lError('function', 'getByDKey>callback','response', response.error);
             return reject(Errs.COUCH_RESPONSE_ERROR);
           }
