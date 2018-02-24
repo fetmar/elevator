@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "nyc --reporter=html --reporter=text mocha --reporter spec",
+    "test": "nyc --reporter=text mocha --reporter spec && nyc report --reporter=text-lcov > .nyc_output/lcov.info",
+    "test-watch": "mocha --watch --reporter spec",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "j@also.engineering",
@@ -27,6 +28,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jest": "^21.12.2",
+    "eslint-plugin-mocha": "^4.11.0",
     "mocha": "^5.0.1",
     "nyc": "^11.4.1",
     "sinon": "^4.3.0",
