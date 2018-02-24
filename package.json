@@ -1,13 +1,13 @@
 {
   "name": "elevator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An update helper for Tangerine.",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "nyc --reporter=text mocha --reporter spec && nyc report --reporter=text-lcov > .nyc_output/lcov.info",
-    "test-watch": "mocha --watch --reporter spec",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "NODE_ENV=test nyc --reporter=text mocha --reporter spec && nyc report --reporter=text-lcov > .nyc_output/lcov.info",
+    "test-watch": "NODE_ENV=test mocha --watch --reporter spec",
+    "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "author": "j@also.engineering",
   "repository": "assess-intl/elevator",

@@ -62,7 +62,7 @@ requireVars.forEach(function processEnvVars(el){
 });
 
 // Halt program if errors
-if (errors.length !== 0) {
+if (errors.length !== 0 && process.env.NODE_ENV !== 'test') {
   console.log(`Elevator requires these environment variables:\n
 ${errors.map((el) => `${el.key}\t\t${el.desc}`).join('\n')}
 `);
