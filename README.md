@@ -53,7 +53,7 @@ The benefit is that the unit tests are really easy to write and the real logic o
 
 ## Security
 
-Certain documents important to the secure functioning of Tangerine are blacklisted and not allowed to be downloaded by this service. The black
+Certain documents important to the secure functioning of Tangerine are blacklisted and not allowed to be downloaded by this service. The blacklist is located in `Conf.js`.
 
 ```
 const SENSITIVE_DOCS = [
