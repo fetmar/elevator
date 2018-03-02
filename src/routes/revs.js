@@ -73,7 +73,7 @@ function route(req, res) {
   // validate the cleaned variables
   validate(cleaned)
     .then(function(){
-      return work(cleaned.groupName, cleaned.requestedIds);
+      return work(cleaned.groupName, cleaned.ids);
     }).then(responder)
     .catch(responder);
 
