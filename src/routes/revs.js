@@ -38,12 +38,14 @@ function work(groupName, ids) {
       // get all docs available for those assessments
       return Couch.getByDKey(groupName, dKeys);
     }).then((response)=>{
-
       // make a list of ids that we want to check the revs for
-      const allIds = response.body.rows
+      const ht = {};
+      response.body.rows
         .map( (row) => row.id )
         .concat('updates')
-        .concat(ids);
+        .concat(ids)
+        .forEach( one => { ht[one] = true;});
+      const allIds = Object.keys(ht);
 
       // get the revs for all those ids
       return Couch.getAllDocsRevs(groupName, allIds);
