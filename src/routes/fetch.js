@@ -36,7 +36,7 @@ function work(groupName, ids) {
   // then remove all the sensitive docs.
   const allIds = ids
     .map( (id) => decodeURIComponent(id) )
-    .filter( (id) => ~Conf.SENSITIVE_DOCS.indexOf(id) );
+    .filter( (id) => !~Conf.SENSITIVE_DOCS.indexOf(id) );
 
   return Couch.getAllDocs(allIds)
     .then(function(response){
