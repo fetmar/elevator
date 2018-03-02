@@ -10,7 +10,10 @@ function loggerFactory(level){
   level = level.toUpperCase();
   return function logger(){
     let valPairs = [];
-    const vals = Array.prototype.slice.call(arguments);
+    let vals = Array.prototype.slice.call(arguments);
+    if (level === 'ERROR') {
+      vals = vals.concat(['stack', (new Error).stack]);
+    }
     vals.forEach(function(e, i){
       if (i % 2 == 0) {
         return;

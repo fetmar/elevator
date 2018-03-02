@@ -39,4 +39,14 @@ describe('makeResponder', ()=>{
     return expect(spy.callCount).to.equal(3);
   });
 
+  it('use responder to catch an error', ()=>{
+    const spy = sinon.spy();
+    const resMock = {};
+    resMock.status = resMock.json = resMock.end = ()=>{ spy(); return resMock; };
+    const responder = makeResponder(resMock);
+    const err = new Error('nothing happened');
+    responder(err);
+    return expect(spy.callCount).to.equal(3);
+  });
+
 });

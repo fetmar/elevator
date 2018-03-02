@@ -2,14 +2,15 @@ module.exports = {
     "env": {
         "es6": true,
         "node": true,
-        "jest/globals": true,
+        "mocha": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
         "sourceType": "module"
     },
-    "plugins" : ["eslint-plugin-jest"],
+    "plugins" : ["mocha"],
     "rules": {
+      "mocha/no-exclusive-tests": "error",
         "complexity": [
           "error", {
             "max" : 4
