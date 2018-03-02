@@ -38,28 +38,23 @@ function work(groupName, ids) {
       // get all docs available for those assessments
       return Couch.getByDKey(groupName, dKeys);
     }).then((response)=>{
-
       // make a list of ids that we want to check the revs for
-      const allIds = response.body.rows
+      const ht = {};
+      response.body.rows
         .map( (row) => row.id )
         .concat('updates')
-        .concat(ids);
+        .concat(ids)
+        .forEach( one => { ht[one] = true;});
+      const allIds = Object.keys(ht);
 
       // get the revs for all those ids
       return Couch.getAllDocsRevs(groupName, allIds);
     }).then((response)=>{
-      // turn them into {id, rev} and remove any undefineds
-      return makeResponse(200, response.body.rows
-        .map(function(one) {
-          if (one.value === undefined) { return; }
-          return {
-            id  : one.id,
-            rev : one.value.rev
-          };
-        }).filter( (one) => one !== undefined )
-      );
+      // send the rows along
+      return makeResponse(200, response.body.rows);
     });
 }
+
 
 // route is a request handler for express.
 function route(req, res) {
@@ -71,7 +66,7 @@ function route(req, res) {
   // validate the cleaned variables
   validate(cleaned)
     .then(function(){
-      return work(cleaned.groupName, cleaned.requestedIds);
+      return work(cleaned.groupName, cleaned.ids);
     }).then(responder)
     .catch(responder);
 

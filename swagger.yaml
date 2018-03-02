@@ -66,8 +66,13 @@ paths:
               properties:
                 id:
                   type: "string"
-                rev:
-                  type: "string"
+                value:
+                  type: "object"
+                  properties:
+                    rev:
+                      type: "string"
+                    deleted:
+                      type: "boolean"
         404:
           description: "No database found, or no version document within the database."
   /fetch/{group}:

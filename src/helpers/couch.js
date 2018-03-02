@@ -42,7 +42,7 @@ module.exports = {
         lError('function', 'getAllDocs', 'msg', 'no ids');
         return reject(Errs.INTERNAL_SERVER_ERROR);
       }
-      unirest.post(Conf.calcAllDocsUrl(groupName)).headers(Conf.JSON_OPTS)
+      unirest.post(Conf.calcAllDocsUrl(groupName)).headers(JSON_OPTS)
         .send({keys:ids})
         .end(( response ) => {
           if (response.statusCode === 0) {
@@ -65,7 +65,7 @@ module.exports = {
         lError('function', 'getAllDocs', 'msg', 'no ids');
         return reject(Errs.INTERNAL_SERVER_ERROR);
       }
-      unirest.post(Conf.calcAllDocsUrl(groupName) + '?include_docs=true').headers(Conf.JSON_OPTS)
+      unirest.post(Conf.calcAllDocsUrl(groupName) + '?include_docs=true').headers(JSON_OPTS)
         .send({keys:ids})
         .end(( response ) => {
           if (response.statusCode === 0) {
@@ -109,7 +109,7 @@ module.exports = {
         return reject(Errs.INTERNAL_SERVER_ERROR);
       }
 
-      unirest.post(Conf.calcByDKeyViewUrl(groupName)).headers(Conf.JSON_OPTS)
+      unirest.post(Conf.calcByDKeyViewUrl(groupName)).headers(JSON_OPTS)
         .send({keys:dKeys})
         .end(( response ) => {
           if (response.statusCode === 0) {
