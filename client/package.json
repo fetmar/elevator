@@ -1,0 +1,32 @@
+{
+  "name": "elevator-client",
+  "version": "1.0.0",
+  "description": "Client code for updating local PouchDB documents from elevator-server.",
+  "main": "elevator.js",
+  "scripts": {
+    "jsdoc": "./jsdoc.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fetmar/elevator.git"
+  },
+  "keywords": [
+    "PouchDB",
+    "Tangerine",
+    "CouchDB",
+    "Elevator"
+  ],
+  "author": "Josh Anderson <j@also.engineering>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fetmar/elevator/issues"
+  },
+  "homepage": "https://github.com/fetmar/elevator#readme",
+  "dependencies": {
+    "pouchdb": "^6.4.3"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.5"
+  }
+}

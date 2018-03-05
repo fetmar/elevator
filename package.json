@@ -10,7 +10,7 @@
     "coverage": "NODE_ENV=test nyc report --reporter=text-lcov | coveralls"
   },
   "author": "j@also.engineering",
-  "repository": "assess-intl/elevator",
+  "repository": "fetmar/elevator",
   "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.18.2",

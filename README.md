@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/fetmar/elevator/badge.svg?branch=master)](https://coveralls.io/github/fetmar/elevator?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b5bd7ee60954e5e96821fbabfbcb0cb)](https://www.codacy.com/app/fetmar/elevator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fetmar/elevator&amp;utm_campaign=Badge_Grade)
 
-The Elevator provides update management features for Tangerine clients.
+The Elevator provides simple polling based updates for CouchDB server PouchDB client based applications.
 
 ## Summary
 
@@ -12,20 +12,17 @@ These calls were meant to be followed in order `version`, `revs`, `fetch`. The v
 
 ## Usage
 
-
 ### Get the version of a specified group
 ```
 curl localhost:4448/version/test_group
 # {"_id":"version","_rev":"...","number":"1"}
 ```
 
-
 ### Get revision numbers for specific documents
 ```
 curl localhost:4448/revs/test_group -H "Content-Type: application/json" -X POST -d '{"ids":["one"]}'
 # {"total_rows":1,"rows":[{"id":"one","key":"one","value":{"rev":"..."}}]}
 ```
-
 
 ### Get a set of documents
 
@@ -34,7 +31,7 @@ curl localhost:4448/fetch/test_group -H "Content-Type: application/json" -X POST
 # {"total_rows":1,"rows":[{"id":"one","key":"one","doc":{...}}]}
 ```
 
-## structure
+## Structure
 
 The routes are broken down into several functions for separation of concerns and to make testing easier. For express's purposes .route is the only one necessary. Like this:
 
@@ -53,7 +50,7 @@ The benefit is that the unit tests are really easy to write and the real logic o
 
 ## Security
 
-Certain documents important to the secure functioning of Tangerine are blacklisted and not allowed to be downloaded by this service. The blacklist is located in `Conf.js`.
+Certain documents important to the secure functioning of your application are blacklisted and not allowed to be downloaded by this service. The blacklist is located in `Conf.js`.
 
 ```
 const SENSITIVE_DOCS = [
@@ -61,6 +58,12 @@ const SENSITIVE_DOCS = [
   'configuration',
   ''];
 ```
+
+## Client code
+
+The [`./client`](./client) directory contains a javascript class that can be used for integration into any PouchDB-CouchDB web application.
+
+See the `ElevatorClient` [readme](./client/README.md) for more info.
 
 ## License
 
