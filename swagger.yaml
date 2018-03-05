@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   description: "The elevator manages updates for Tangerine. This service is used by the tangerine client "
-  version: "0.0.2"
+  version: "0.0.3"
   title: "elevator"
   contact:
     email: "j@also.engineering"
@@ -58,7 +58,7 @@ paths:
         401:
           description: "Bad request. Could be missing the group name."
         200:
-          description: "Successfully retrieved the version document."
+          description: "Successfully retrieved revision numbers for requested ids."
           schema:
             type: "array"
             items:
@@ -90,7 +90,7 @@ paths:
         401:
           description: "Bad request. Could be missing the group name."
         200:
-          description: "Successfully retrieved the version document."
+          description: "Successfully retrieved the requested documents."
           schema:
             type: "array"
             items:
