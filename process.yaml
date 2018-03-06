@@ -1,0 +1,5 @@
+apps:
+  - script   : '/app/src/server.js'
+    name     : 'Elevator'
+    exec_mode: 'cluster'
+    instances: 2
