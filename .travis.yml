@@ -8,8 +8,8 @@ install: npm install
 script: npm test
 after_success:
   - npm run coverage
-  - docker build -t fetmar/elevator .
-  - docker push fetmar/elevator
+  - docker build -t fetmar/elevator:latest .
+  - docker push fetmar/elevator:latest
 
 docker:
   pass:
