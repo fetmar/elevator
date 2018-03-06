@@ -8,6 +8,7 @@ script: npm test
 after_success:
 - npm run coverage
 - docker build -t fetmar/elevator:latest . --build-arg GIT_SHA=`git rev-parse --short HEAD`
+- docker login
 - docker push fetmar/elevator:latest
 env:
   global:
