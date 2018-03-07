@@ -4,7 +4,7 @@
 
 # Only build for master
 if [ "$TRAVIS_BRANCH" != "master" ]; then
-  exit 0
+  #exit 0
 fi
 
 VERSION=$(grep "version" ./package.json | sed -e 's/.*"version".*\([0-9]\.[0-9]\.[0-9]\)".*/\1/')
@@ -16,5 +16,8 @@ docker build -t fetmar/elevator:latest . \
   --build-arg VERSION="$VERSION" \
   --build-arg BUILD_DATE="$BUILD_DATE"
 
+docker tag fetmar/elevator:latest fetmar/elevator:"$VERSION"
+
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 docker push fetmar/elevator:latest
+docker push fetmar/elevator:"$VERSION"
