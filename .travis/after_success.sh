@@ -3,9 +3,9 @@
 # Errors here won't show as a failed build.
 
 # Only build for master
-if [ "$TRAVIS_BRANCH" != "master" ]; then
+#if [ "$TRAVIS_BRANCH" != "master" ]; then
   #exit 0
-fi
+#fi
 
 VERSION=$(grep "version" ./package.json | sed -e 's/.*"version".*\([0-9]\.[0-9]\.[0-9]\)".*/\1/')
 BUILD_DATE=$(date --date="Feb 2 2014 13:12:10")
