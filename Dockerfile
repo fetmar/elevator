@@ -16,16 +16,23 @@ LABEL org.label-schema.vendor="Also Engineering" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.schema-version="1.0"
 
-WORKDIR /app
-
-COPY package.json /app
-
-RUN npm install
-
+# Install pm2 as root
 RUN npm install pm2 -g
 
-COPY . /app
+# Make a non-root user.
+RUN useradd --create-home -s /bin/bash user
+USER user
+RUN mkdir /home/user/app
+WORKDIR /home/user/app
 
-CMD ["pm2-runtime", "process.yaml", "--web", "5555"]
+# For caching
+COPY package.json /home/user/app
+RUN npm install
+
+# Copy everything
+COPY . /home/user/app
+
+# Use pm2 to get the elevator up again when it goes down.
+CMD ["pm2-runtime", "process.yaml"]
 
 EXPOSE 4448
