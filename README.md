@@ -3,12 +3,15 @@
 [![Build Status](https://travis-ci.org/fetmar/elevator.svg?branch=master)](https://travis-ci.org/fetmar/elevator)
 [![Coverage Status](https://coveralls.io/repos/github/fetmar/elevator/badge.svg?branch=master)](https://coveralls.io/github/fetmar/elevator?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b5bd7ee60954e5e96821fbabfbcb0cb)](https://www.codacy.com/app/fetmar/elevator?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fetmar/elevator&amp;utm_campaign=Badge_Grade)
+[![](https://images.microbadger.com/badges/version/fetmar/elevator.svg)](https://microbadger.com/images/fetmar/elevator "Get your own version badge on microbadger.com")
 
-The Elevator provides simple polling based updates from CouchDB to PouchDB.
+The Elevator provides simple polling based updates from CouchDB to PouchDB within Tangerine®.
 
-## Summary
+## Overview
 
-These calls were meant to be followed in order `version`, `revs`, `fetch`. The version is retrieved to see if there is a desire for the client devices to update. If the local version doesn't match the server version, the update sequence is triggered. Local document ids can be sent in to the `revs` endpoint to see which need to be updated. The server revs are compared with the local revs and all differing document `_id`s are marked to be fetched. The server also sends new documents that are not archived as well as an update document that will contain any javascript necessary for hotfixing small bugs.
+The following API endpoints were meant to be called in order `version`, `revs`, `fetch`. The version is retrieved to see if there is a desire for the client devices to update. If the local version doesn't match the server version, the update sequence is triggered. Local document ids can be sent in to the `revs` endpoint to see which need to be updated. The server revs are compared with the local revs and all differing document `_id`s are marked to be fetched. The server also sends new documents that are not archived as well as an update document that will contain any javascript necessary for hotfixing small bugs.
+
+This service provides a convenient alternative when true CouchDB replication is not required and only a server to client overwrite is required.
 
 ## Usage
 
