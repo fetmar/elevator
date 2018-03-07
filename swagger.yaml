@@ -1,9 +1,10 @@
 swagger: "2.0"
 info:
-  description: "The elevator manages updates for Tangerine. This service is used by the tangerine client "
+  description: "Manages simple updates from CouchDB to PouchDB."
   version: "0.0.3"
   title: "elevator"
   contact:
+    name: "Josh Anderson"
     email: "j@also.engineering"
   license:
     name: "GPLv3"
